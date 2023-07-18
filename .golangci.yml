@@ -1,0 +1,17 @@
+linters:
+  disable-all: true
+  enable:
+    - govet
+    - gofmt
+    - goimports
+    - gocyclo
+    - revive
+    - dupl
+    - goconst
+    - misspell
+    - lll
+    - unused
+    - unparam
+
+run:
+  timeout: 5m
