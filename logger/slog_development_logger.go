@@ -16,7 +16,6 @@ func NewSlogLogger() Logger {
 
 	logger := slog.New(tint.NewHandler(os.Stderr, nil))
 
-	// set global logger with custom options
 	slog.SetDefault(slog.New(
 		tint.NewHandler(os.Stderr, &tint.Options{
 			Level:      slog.LevelDebug,

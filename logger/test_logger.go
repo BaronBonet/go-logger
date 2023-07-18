@@ -10,22 +10,22 @@ func NewTestLogger() *TestLogger {
 	}
 }
 
-func (t *TestLogger) Debug(msg string, keysAndValues ...interface{}) {
+func (t *TestLogger) Debug(msg string, _ ...interface{}) {
 	t.Messages = append(t.Messages, msg)
 }
 
-func (t *TestLogger) Info(msg string, keysAndValues ...interface{}) {
+func (t *TestLogger) Info(msg string, _ ...interface{}) {
 	t.Messages = append(t.Messages, msg)
 }
 
-func (t *TestLogger) Warn(msg string, keysAndValues ...interface{}) {
+func (t *TestLogger) Warn(msg string, _ ...interface{}) {
 	t.Messages = append(t.Messages, msg)
 }
 
-func (t *TestLogger) Error(msg string, keysAndValues ...interface{}) {
+func (t *TestLogger) Error(msg string, _ ...interface{}) {
 	t.Messages = append(t.Messages, msg)
 }
 
-func (t *TestLogger) Fatal(msg string, keysAndValues ...interface{}) {
+func (t *TestLogger) Fatal(msg string, _ ...interface{}) {
 	t.Messages = append(t.Messages, msg)
 }
