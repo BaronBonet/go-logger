@@ -1,6 +1,8 @@
 package logger
 
 import (
+	"os"
+
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
@@ -45,7 +47,7 @@ func (l *zapLogger) Error(msg string, keysAndValues ...interface{}) {
 
 func (l *zapLogger) Fatal(msg string, keysAndValues ...interface{}) {
 	l.log(zap.ErrorLevel, msg, keysAndValues...)
-	panic(msg)
+	os.Exit(1)
 }
 
 func (l *zapLogger) log(level zapcore.Level, msg string, keysAndValues ...interface{}) {
