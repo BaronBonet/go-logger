@@ -4,24 +4,30 @@ import (
 	"os"
 	"time"
 
+	"log/slog"
+
 	"github.com/lmittmann/tint"
-	"golang.org/x/exp/slog"
 )
 
 type slogLogger struct {
 	logger *slog.Logger
 }
 
-func NewSlogLogger() Logger {
+// NewSlogLogger creates a new slog logger with the specified log level.
+// If no log level is provided (slog.LevelDebug), it defaults to debug.
+func NewSlogLogger(logLevel ...slog.Level) Logger {
+	level := slog.LevelDebug
 
-	logger := slog.New(tint.NewHandler(os.Stderr, nil))
+	if len(logLevel) > 0 {
+		level = logLevel[0]
+	}
 
-	slog.SetDefault(slog.New(
-		tint.NewHandler(os.Stderr, &tint.Options{
-			Level:      slog.LevelDebug,
-			TimeFormat: time.Kitchen,
-		}),
-	))
+	logger := slog.New(tint.NewHandler(os.Stderr, &tint.Options{
+		Level:      level,
+		TimeFormat: time.Kitchen,
+	}))
+
+	slog.SetDefault(logger)
 
 	return &slogLogger{
 		logger: logger,
@@ -46,5 +52,5 @@ func (l *slogLogger) Error(msg string, keysAndValues ...interface{}) {
 
 func (l *slogLogger) Fatal(msg string, keysAndValues ...interface{}) {
 	l.logger.Error(msg, keysAndValues...)
-	panic(msg)
+	os.Exit(1)
 }
