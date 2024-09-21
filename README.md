@@ -5,7 +5,7 @@ Go logger is a logging port and set of opinionated adapters meant to simplify us
 ## Install
 
 ```shell
-go get BaronBonet/go-logger.v1
+go get github.com/BaronBonet/go-logger
 ```
 
 ## Why
