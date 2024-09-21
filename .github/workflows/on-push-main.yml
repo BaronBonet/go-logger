@@ -10,7 +10,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Bump version
         # https://github.com/anothrNick/github-tag-action?tab=readme-ov-file#workflow
-        # To do a major version bump then use '#major` in the merge commit message
+        # To do a major version bump then use `#major` in the commit message
+        # For a patch version bump then use `#patch` in the commit message
         uses: anothrNick/github-tag-action@1.70.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
