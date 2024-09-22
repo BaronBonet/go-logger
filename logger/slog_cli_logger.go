@@ -16,7 +16,7 @@ type slogLogger struct {
 // NewSlogLogger creates a new slog logger with the specified log level.
 // If no log level is provided (slog.LevelDebug), it defaults to debug.
 func NewSlogLogger(logLevel ...slog.Level) Logger {
-	level := slog.LevelDebug
+	level := slog.LevelInfo
 
 	if len(logLevel) > 0 {
 		level = logLevel[0]
